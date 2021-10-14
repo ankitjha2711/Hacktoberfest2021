@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main() {
+int n;
+printf("Enter no. of elements in an array:");
+scanf("%d",&n);
+int array[n], x[n],k=0,o[n]; 
+printf("Enter elements:");
+for (int i=0;i<n;i++){
+    
+	scanf("%d",&array[i]);
+}
+
+for (int i=0;i<n;i++){ 
+     int a=array[i]; 
+     int c=0;
+     for (int j=0; j<n; j++)
+        { if(array[j] ==a && array[j]!=-1)
+          { c++; 
+		  array[j]=-1;
+	}
+
+}
+x[k]=a; o[k++]=c;
+
+}
+ for(int i=0;i<n && x[i]!=-1; i++)
+    { for (int j=0; j<n-i-1;j++)
+         { if(o[j]<o[j+1]) 
+		    { int s=o[j]; int s1=x[j];
+			 o[j]=o[j+1];x[j]=x[j+1]; 
+			 o[j+1]=s; x[j+1]=s1;
+		}
+	}
+}
+
+ for (int i=0;i<n && x[i]!=-1; i++){ 
+      printf("%d presents %d times\n", x[i],o[i]);
+
+}
+}
+
