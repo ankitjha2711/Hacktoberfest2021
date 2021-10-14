@@ -1,0 +1,38 @@
+#include <stdio.h>
+ 
+int missing_term(int nums[], int n)
+{
+    int low = 0, high = n - 1;
+    int d = (nums[n - 1] - nums[0]) / n;
+    while (low <= high)
+    {
+        int mid = high - (high - low) / 2;
+        if (mid + 1 < n && nums[mid + 1] - nums[mid] != d) {
+            return nums[mid + 1] - d;
+        }
+
+        if (mid - 1 >= 0 && nums[mid] - nums[mid - 1] != d) {
+            return nums[mid - 1] + d;
+        }
+
+        if (nums[mid] - nums[0] != (mid - 0) * d) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+}
+ 
+int main(void)
+{
+    int nums[100],o,i; 
+    scanf("%d",&o);   
+    for(i = 0; i<o; i++)  
+    {  
+        scanf("%d",&nums[i]);  
+    } 
+    printf("%d", missing_term(nums,o));
+ 
+    return 0;
+}
